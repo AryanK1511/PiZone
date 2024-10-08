@@ -1,6 +1,6 @@
-# Raspberry Pi Guidebook
+# PiZone
 
-Welcome to the **Raspberry Pi Guidebook**! 🎉
+Welcome to the **PiZone**, your Raspberry Pi guidebook! 🎉
 
 I’ve noticed that a lot of people are interested in using Raspberry Pi for hackathons, capstone projects, and personal projects. As someone who loves interfacing hardware with software, I decided to create this repository in order to have a one-stop shop for everything you need to know about getting started with Raspberry Pi's basic features.
 
@@ -20,7 +20,6 @@ If you’re not familiar with installing an OS on your Raspberry Pi, you can fol
 ### Why Ubuntu Desktop?
 
 I've chosen **Ubuntu Desktop** because it provides a full desktop environment with all the flexibility of a Linux-based system, making it ideal for development projects. Whether you're running scripts, developing software, or setting up servers, Ubuntu offers a user-friendly experience with lots of support from the community.
-
 
 ## Contribution
 
