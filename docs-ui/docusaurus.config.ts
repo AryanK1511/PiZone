@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'PiZone',
   tagline: 'Sample Tagline',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/PiZone_Icon.png',
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
@@ -54,12 +54,11 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'PiZone',
       logo: {
         alt: 'PiZone Logo',
-        src: 'img/logo.svg',
+        src: 'img/PiZone_Icon.png',
       },
       items: [
         {
@@ -70,53 +69,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Tutorial',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'Follow me',
-          items: [
-            {
-              label: 'LinkedIn',
-              href: 'https://www.linkedin.com/in/aryan-khurana-239684229/',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/AryanK1511',
-            },
-            {
-              label: 'YouTube',
-              href: 'https://www.youtube.com/channel/UCCrKswcxk_hCSXedUEOs7Fw',
-            },
-            {
-              label: 'Website',
-              href: 'https://www.aryank.me',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'My Blog',
-              to: 'https://github.com/AryanK1511',
-            },
-            {
-              label: 'Project GitHub',
-              href: 'https://github.com/AryanK1511/PiZone',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} PiZone. Built by Aryan Khurana.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <strong>PiZone</strong>. Built by Aryan Khurana.`,
     },
     prism: {
       theme: prismThemes.github,
