@@ -2,6 +2,8 @@
 
 Welcome to the **PiZone**, your Raspberry Pi guidebook! 🎉
 
+![PiZone Logo](./docs-ui/static/img/PiZone_Logo_Landscape.png)
+
 I’ve noticed that a lot of people are interested in using Raspberry Pi for hackathons, capstone projects, and personal projects. As someone who loves interfacing hardware with software, I decided to create this repository in order to have a one-stop shop for everything you need to know about getting started with Raspberry Pi's basic features.
 
 The goal of this project is to make it easier for you to get up and running with your Raspberry Pi, no matter what you're building. It's meant to be a collaborative and fun space for us to share our knowledge with each other. I’m not an expert myself, and that’s okay! This project is about learning and growing together. So, whether you're building IoT systems, home automation, or just tinkering for fun, this guide will help you along the way.
