@@ -1,0 +1,141 @@
+---
+sidebar_position: 1
+---
+
+# Remote Desktop Setup with TigerVNC on Raspberry Pi
+
+This guide is inspired by [David Bombal's YouTube video](https://www.youtube.com/watch?v=3K1hUwxxYek), but with more detailed explanations aimed at beginners. By following these step-by-step instructions, you'll be able to set up a VNC server on your Raspberry Pi running Ubuntu, making it accessible remotely.
+
+## Step 1: Prerequisites
+
+Ensure that you have:
+
+- A Raspberry Pi running Ubuntu
+- SSH access to your Raspberry Pi from your computer
+- The Pi connected to the same network as your computer
+
+## Step 2: Find Your Raspberry Pi’s IP Address
+
+Run the following command to find your Pi's IP address:
+
+```bash
+hostname -I
+```
+
+This will give you the IP address you'll need to connect to your Raspberry Pi using a VNC client.
+
+## Step 3: Update Your System
+
+Start by updating your system packages. Open a terminal (or SSH into your Raspberry Pi) and run:
+
+```bash
+sudo apt update
+```
+
+## Step 4: Install X11VNC (VNC Server)
+
+Now, install **x11vnc**, which allows you to share your Pi’s screen over the network:
+
+```bash
+sudo apt install x11vnc
+```
+
+## Step 5: Set Up X11VNC as a Service
+
+To make X11VNC start automatically every time your Pi boots, you need to create a system service.
+
+1. Open the systemd service file for editing:
+
+   ```bash
+   sudo vi /lib/systemd/system/x11vnc.service
+   ```
+
+2. Add the following content to this file:
+
+   ```bash
+   [Unit]
+   Description=x11vnc service
+   After=display-manager.service network.target syslog.target
+
+   [Service]
+   Type=simple
+   ExecStart=/usr/bin/x11vnc -forever -display :0 -auth guess -passwd password
+   ExecStop=/usr/bin/killall x11vnc
+   Restart=on-failure
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+- **ExecStart**: This command starts the VNC server. Replace `password` with your chosen VNC password.
+- **Restart=on-failure**: Ensures that if the service fails, it will restart automatically.
+
+3. After saving the file, reload the systemd configuration to register the new service:
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+4. Enable the service to start at boot:
+
+   ```bash
+   sudo systemctl enable x11vnc.service
+   ```
+
+5. Start the service now:
+
+   ```bash
+   sudo systemctl start x11vnc.service
+   ```
+
+6. Check the status of the service to make sure it’s running:
+
+   ```bash
+   sudo systemctl status x11vnc.service
+   ```
+
+### Step 6: Prevent Screen Locking
+
+To prevent the screen from locking on your Raspberry Pi running Ubuntu through the command line, you can disable the automatic screen lock and screen blanking using `gsettings`. Here's how you can do it:
+
+1. **Disable the automatic screen lock:**
+
+   Run the following command to turn off automatic screen locking:
+
+   ```bash
+   gsettings set org.gnome.desktop.screensaver lock-enabled false
+   ```
+
+2. **Set the screen to never blank:**
+
+   Use this command to prevent the screen from turning off:
+
+   ```bash
+   gsettings set org.gnome.desktop.session idle-delay 0
+   ```
+
+   This sets the idle delay to `0`, meaning the screen will never blank.
+
+3. **Disable the screensaver:**
+
+   If you're using a screensaver, you can disable it with this command:
+
+   ```bash
+   gsettings set org.gnome.desktop.screensaver idle-activation-enabled false
+   ```
+
+These commands should effectively prevent the screen from locking and going blank when you're using your Raspberry Pi remotely.
+
+### Step 7: Connect Using TigerVNC
+
+On your computer, install **TigerVNC Viewer** (or any VNC viewer of your choice). Open the viewer and input your Raspberry Pi’s IP address followed by `:0`. For example:
+
+```txt
+192.168.1.100:0
+```
+
+Input the VNC password you set up earlier, and you should now be able to see and control your Raspberry Pi's desktop remotely!
+
+## Author
+
+[Aryan Khurana](https://www.github.com/AryanK1511)
